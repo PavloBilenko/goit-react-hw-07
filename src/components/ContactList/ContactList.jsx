@@ -1,6 +1,6 @@
 // src/components/ContactList/ContactList.jsx
 import React, { useEffect } from 'react';
-import Contact from '../Contact/Contact';  // імпортуємо компонент Contact
+import Contact from '../Contact/Contact';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchContacts, deleteContact } from '../../redux/contactsOps';
@@ -32,7 +32,7 @@ const ContactList = () => {
             id={id}
             name={name}
             number={number}
-            onDelete={() => dispatch(deleteContact(id))} // передаємо функцію для видалення
+            onDelete={() => dispatch(deleteContact(id))}
           />
         ))}
       </ul>

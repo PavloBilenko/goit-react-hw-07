@@ -1,6 +1,6 @@
 // src/components/Contact/Contact.jsx
 import React from 'react';
-import s from './Contact.module.css'; // імпортуємо стилі
+import s from './Contact.module.css';
 
 const Contact = ({ id, name, number, onDelete }) => {
   return (

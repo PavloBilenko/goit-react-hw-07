@@ -4,7 +4,7 @@
   gap: 15px;
   width: 100%;
   max-width: 400px;
-  margin: 0 auto; /* Центрує форму на сторінці */
+  margin: 0 auto;
 }
 
 .formGroup {
@@ -19,12 +19,12 @@
 
 .input {
   width: 100%;
-  box-sizing: border-box; /* Додає паддинг до ширини */
+  box-sizing: border-box;
   padding: 8px;
   border: 1px solid #ccc;
   border-radius: 4px;
   font-size: 14px;
-  margin-top: 5px; /* Додає простір між міткою і полем */
+  margin-top: 5px;
 }
 
 .button {
@@ -36,7 +36,7 @@
   font-size: 16px;
   cursor: pointer;
   text-align: center;
-  width: 100%; /* Кнопка займатиме всю ширину форми */
+  width: 100%;
 }
 
 .button:hover {

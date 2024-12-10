@@ -1,7 +1,7 @@
 // src/redux/contactsSlice.js
 import { createSlice } from '@reduxjs/toolkit';
 import { fetchContacts, addContact, deleteContact } from './contactsOps';
-import { createSelector } from '@reduxjs/toolkit'; // Імпортуємо createSelector для створення селектора
+import { createSelector } from '@reduxjs/toolkit';
 
 const initialState = {
   items: [],
@@ -39,7 +39,7 @@ const contactsSlice = createSlice({
 
 // Додаємо селектор для фільтрації контактів
 export const selectFilteredContacts = (state) => {
-  const nameFilter = state.filters.name; // Припускаємо, що фільтр зберігається в state.filters
+  const nameFilter = state.filters.name;
   const contacts = state.contacts.items;
 
   if (!nameFilter) {
