@@ -1,23 +1,16 @@
+// src/components/Contact/Contact.jsx
 import React from 'react';
-import { useDispatch } from 'react-redux';
-import { deleteContact } from '../../redux/contactsSlice';
-import s from './Contact.module.css';
+import s from './Contact.module.css'; // імпортуємо стилі
 
-export const Contact = ({ contact }) => {
-  const dispatch = useDispatch();
-
-  const handleDelete = () => {
-    dispatch(deleteContact(contact.id));
-  };
-
+const Contact = ({ id, name, number, onDelete }) => {
   return (
     <li className={s.contact}>
-      <span>
-        {contact.name}: {contact.number}
-      </span>
-      <button className={s.button} onClick={handleDelete}>
+      {name}: {number}
+      <button className={s.button} onClick={onDelete}>
         Delete
       </button>
     </li>
   );
 };
+
+export default Contact;

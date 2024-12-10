@@ -1,23 +1,43 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
-import { selectContacts } from '../../redux/contactsSlice';
-import { selectNameFilter } from '../../redux/filtersSlice';
-import { Contact } from '../Contact/Contact';
+// src/components/ContactList/ContactList.jsx
+import React, { useEffect } from 'react';
+import Contact from '../Contact/Contact';  // імпортуємо компонент Contact
+
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchContacts, deleteContact } from '../../redux/contactsOps';
+import {
+  selectFilteredContacts,
+  selectLoading,
+  selectError,
+} from '../../redux/contactsSlice';
 import s from './ContactList.module.css';
 
-export const ContactList = () => {
-  const contacts = useSelector(selectContacts);
-  const filter = useSelector(selectNameFilter);
+const ContactList = () => {
+  const dispatch = useDispatch();
+  const contacts = useSelector(selectFilteredContacts);
+  const loading = useSelector(selectLoading);
+  const error = useSelector(selectError);
 
-  const filteredContacts = contacts.filter((contact) =>
-    contact.name.toLowerCase().includes(filter.toLowerCase()),
-  );
+  useEffect(() => {
+    dispatch(fetchContacts());
+  }, [dispatch]);
 
   return (
-    <ul className={s.list}>
-      {filteredContacts.map((contact) => (
-        <Contact key={contact.id} contact={contact} />
-      ))}
-    </ul>
+    <div>
+      {loading && <p>Loading...</p>}
+      {error && <p>Error: {error}</p>}
+      <ul className={s.list}>
+        {contacts.map(({ id, name, number }) => (
+          <Contact
+            key={id}
+            id={id}
+            name={name}
+            number={number}
+            onDelete={() => dispatch(deleteContact(id))} // передаємо функцію для видалення
+          />
+        ))}
+      </ul>
+    </div>
   );
 };
+
+export default ContactList;
